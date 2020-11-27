@@ -1,9 +1,10 @@
-const e = require("express");
 const express = require("express");
 const app = express();
 const port  = process.env.PORT || 3000;
 app.use(express.json());
 app.listen(port, ()=> console.log(`Your app is running with the ${port}`));
+
+
 
 let rooms = [];
 
@@ -179,22 +180,3 @@ function updateRoomWithBookingData(room, req, res) {
 }
 
 
-app.get("/get-user/:id", (req,res)=>{
-    let result = users.find((data)=>{
-        return data.id == +req.params.id;
-    });
-    res.status(200).json({
-        message: "Data found",
-        result,
-    });
-});
-
-app.get("/get-user/?id", (req,res)=>{
-    let result = users.find((data)=>{
-        return data.id == +req.query.id;
-    });
-    res.status(200).json({
-        message: "Data found",
-        result,
-    });
-});
